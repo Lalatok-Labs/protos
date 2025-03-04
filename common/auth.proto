@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package auth;
+
+// This is the Go package name
+option go_package = "proto/authpb";
+
+// Auth service
+service AuthService {
+    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc Register (RegisterRequest) returns (RegisterResponse);
+    rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse);
+    rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse);
+}
+
+// Login request and response
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+    int32 expires_in = 3;
+}
+
+// Register request and response
+message RegisterRequest {
+    string username = 1;
+    string phone = 2;
+    string password = 3;
+    string full_name = 4;
+    string role = 5;
+}
+
+message RegisterResponse {
+    string message = 1;
+    string access_token = 2;
+    string refresh_token = 3;
+    int32 expires_in = 4;
+}
+
+// Refresh token request and response
+message RefreshTokenRequest {
+    string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+    string access_token = 1;
+    int32 expires_in = 2;
+}
+
+// Validate token request and response
+message ValidateTokenRequest {
+    string access_token = 1;
+}
+
+message ValidateTokenResponse {
+    bool valid = 1;
+    string message = 2;
+}
