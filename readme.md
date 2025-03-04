@@ -3,10 +3,16 @@
 ```
 $ git submodule add https://github.com/Lalatok-Labs/protos.git proto
 
-$ protoc \          
-    -Iproto/common \
-    --go_out=internal/proto \
-    --go-grpc_out=internal/proto \
-    proto/common/ping.proto
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
+$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+$ export PATH="$PATH:$(go env GOPATH)/bin"
+
+$ mkdir proto/pb
+
+$ protoc \
+    --go_out=proto/pb \
+    --go-grpc_out=proto/pb \
+    proto/common/ping.proto
 ```

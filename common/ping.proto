@@ -3,7 +3,7 @@ syntax = "proto3";
 package ping;
 
 // This is the Go package name
-option go_package = "proto/pingpb";
+option go_package = "pingpb/";
 
 service PingService {
   rpc Ping(PingRequest) returns (PingResponse);

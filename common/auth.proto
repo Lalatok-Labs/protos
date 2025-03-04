@@ -3,7 +3,7 @@ syntax = "proto3";
 package auth;
 
 // This is the Go package name
-option go_package = "proto/authpb";
+option go_package = "authpb/";
 
 // Auth service
 service AuthService {
@@ -15,7 +15,7 @@ service AuthService {
 
 // Login request and response
 message LoginRequest {
-    string username = 1;
+    string phone = 1;
     string password = 2;
 }
 
@@ -27,11 +27,8 @@ message LoginResponse {
 
 // Register request and response
 message RegisterRequest {
-    string username = 1;
     string phone = 2;
     string password = 3;
-    string full_name = 4;
-    string role = 5;
 }
 
 message RegisterResponse {
